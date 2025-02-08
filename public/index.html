@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dan's Superbowl Squares</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Dan's Superbowl Squares</h1>
+
+    <div class="flex-container">
+        <div id="paid-list" class="box">
+            <h2>Who Has Paid:</h2>
+            <ul id="who-has-paid">Loading...</ul>
+            <div id="venmo-button">
+                <a href="https://venmo.com/code?user_id=1380659079675904680" target="_blank">
+                    <button>Venmo $16 For 8 Squares</button>
+                </a>
+            </div>
+        </div>
+
+        <div id="scoreboard" class="box scoreboard">
+            <div id="score">Fetching Superbowl data...</div>
+        </div>
+    </div>
+
+    <div id="grid-container">
+        <div id="grid">Loading grid...</div>
+    </div>
+
+    <script>
+        // Fetch Superbowl data for the scoreboard
+        async function fetchScoreboardData() {
+            try {
+                const response = await fetch('/api/superbowl');
+                const data = await response.json();
+
+                if (data.message) {
+                    document.getElementById('score').innerText = data.message;
+                    return;
+                }
+
+                const { status, homeTeam, homeTeamScore, awayTeam, awayTeamScore } = data;
+                document.getElementById('score').innerHTML = `
+                        <p>Status: ${status}</p>
+                        <p> <img src="phiLogo.png" alt="Eagles Logo" class="team-logo"> ${homeTeam}: ${homeTeamScore}</p>
+                        <p><img src="kcLogo.png" alt="Chiefs Logo" class="team-logo"> ${awayTeam}: ${awayTeamScore}</p>
+                    `;
+            } catch (error) {
+                document.getElementById('score').innerText = 'Error fetching scoreboard data.';
+                console.error('Error fetching scoreboard data:', error);
+            }
+        }
+
+        // Fetch grid data
+        async function fetchGridData() {
+            try {
+                const response = await fetch('/api/assignments');
+                const data = await response.json();
+
+                const paidList = document.getElementById('who-has-paid');
+                paidList.innerHTML = '';
+                data.whoHasPaid.forEach(person => {
+                    paidList.innerHTML += `<li>${person}</li>`;
+                });
+
+                let table = '<table><tr><th></th>';
+                for (let i = 0; i < 10; i++) {
+                    table += `<th>${i}</th>`;
+                }
+                table += '</tr>';
+                for (let row = 0; row < 10; row++) {
+                    table += `<tr><th>${row}</th>`;
+                    for (let col = 0; col < 10; col++) {
+                        let cellContent = '';
+                        for (let person in data.assignments) {
+                            if (data.assignments[person].includes(`(${row}, ${col})`)) {
+                                cellContent += `<div>${person}</div>`;
+                            }
+                        }
+                        table += `<td>${cellContent}</td>`;
+                    }
+                    table += '</tr>';
+                }
+                table += '</table>';
+                document.getElementById('grid').innerHTML = table;
+            } catch (error) {
+                document.getElementById('grid').innerHTML = 'Error loading grid.';
+                console.error('Error fetching grid data:', error);
+            }
+        }
+
+        fetchScoreboardData();
+        fetchGridData();
+    </script>
+</body>
+</html>

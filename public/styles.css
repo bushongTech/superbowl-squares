@@ -1,0 +1,158 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 2px 2px #333;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.box {
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #4cfa4f;
+    width: 280px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+#paid-list {
+    background-color: white;
+    color: black;
+}
+
+    #paid-list h2 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+    }
+
+#who-has-paid {
+    list-style: none;
+    padding: 0;
+}
+
+    #who-has-paid li {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+#venmo-button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+    #venmo-button button {
+        background-color: #3d95ce;
+        color: white;
+        font-size: 16px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        #venmo-button button:hover {
+            background-color: #2d74a2;
+        }
+
+.scoreboard {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    font-size: 14px;
+}
+
+#score p {
+    margin: 4px 0;
+}
+
+#grid-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#grid {
+    margin: 15px 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 2px solid white; 
+    border-top: 10px solid #ff0000; 
+    border-left: 10px solid #042605; 
+}
+
+th, td {
+    padding: 10px;
+    border: 2px solid white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    color: white;
+}
+
+
+    th, td:first-child {
+        background-color: black;
+        font-weight: bold;
+    }
+
+td {
+    background-color: #1d8d07;
+    color: white;
+}
+
+    td div {
+        font-size: 10px;
+        margin: 1px 0;
+    }
+
+.team-logo {
+    width: 25px; 
+    height: 25px;
+    margin-right: 6px;
+    vertical-align: middle;
+    object-fit: contain; /* Ensures logos maintain their aspect ratio */
+}
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .box {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 10px;
+    }
+
+    #venmo-button button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}

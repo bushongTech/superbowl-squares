@@ -1,0 +1,17 @@
+{
+  "name": "superbowl-squares",
+  "version": "1.0.0",
+  "description": "Host code for superbowl squares",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Dan Bushong",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
+  }
+}
