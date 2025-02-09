@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const showSquares = false; // Change this to true when you want to show the names
 
 // Array of users who have paid
-const whoHasPaid = ['Grant F.', 'Ben C.', 'Bryce B.', 'Dan B.', 'Dave R.', 'Matt W.', 'Lauren W.', 'Matt S.', '8/12 Spots Filled'];
+const whoHasPaid = ['Grant F.', 'Ben C.', 'Bryce B.', 'Dan B.', 'Dave R.', 'Matt W.', 'Lauren W.', 'Matt S.', 'Justin W.', '9/12 Spots Filled'];
 
 // Cached grid assignments
 let cachedAssignments = null;
