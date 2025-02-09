@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const showSquares = false; // Change this to true when you want to show the names
 
 // Array of users who have paid
-const whoHasPaid = ['Grant F.', 'Ben C.', 'Bryce B.', 'Dan B.', 'Dave R.', 'Matt W.', 'Lauren W.', 'Matt S.', 'Justin W.', '9/12 Spots Filled'];
+const whoHasPaid = ['Grant F.', 'Ben C.', 'Bryce B.', 'Dan B.', 'Dave R.', 'Matt W.', 'Lauren W.', 'Matt S.', 'Justin W.', 'Lauren O.','10/12 Spots Filled'];
 
 // Cached grid assignments
 let cachedAssignments = null;
@@ -74,7 +74,7 @@ app.get('/api/superbowl', async (req, res) => {
 function generateGridAssignments() {
     const names = [
         'Bryce B.', 'Ben C.', 'Dan B.',
-        'Danny P.', 'Dave R.', 'Eric A.',
+        'Danny P.', 'Dave R.', 'Lauren O.',
         'Grant F.', 'Justin W.', 'Lauren W.',
         'Matt S.', 'Matt W.', 'Max W.'
     ];
