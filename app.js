@@ -76,7 +76,7 @@ function generateGridAssignments() {
         'Bryce B.', 'Ben C.', 'Dan B.',
         'Danny P.', 'Dave R.', 'Eric A.',
         'Grant F.', 'Justin W.', 'Lauren W.',
-        'Mike M.', 'Matt W.', 'Max W.'
+        'Matt S.', 'Matt W.', 'Max W.'
     ];
 
     const totalCoordinates = 100;
