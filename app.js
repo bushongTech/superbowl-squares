@@ -15,7 +15,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 const showSquares = false; // Change this to true when you want to show the names
 
 // Array of users who have paid
-const whoHasPaid = ['Grant F.', 'Ben C.', 'Bryce B.', 'Dan B.', 'Dave R.', 'Matt W.', 'Lauren W.', 'Matt S.', 'Justin W.', 'Lauren O.','10/12 Spots Filled'];
+const whoHasPaid = [
+    'Bryce B.', 
+    'Ben C.', 
+    'Dan B.', 
+    'Dave R.',
+    'Grant F.',
+    'Justin W.',
+    'Lauren O.', 
+    'Lauren W.',
+    'Matt S.', 
+    'Matt W.',  
+    'Sophia B.',
+    '11/12 Spots Filled'
+];
+
 
 // Cached grid assignments
 let cachedAssignments = null;
@@ -73,10 +87,17 @@ app.get('/api/superbowl', async (req, res) => {
 // Function to generate unique grid assignments and assign leftover squares to Andy B.
 function generateGridAssignments() {
     const names = [
-        'Bryce B.', 'Ben C.', 'Dan B.',
-        'Danny P.', 'Dave R.', 'Lauren O.',
-        'Grant F.', 'Justin W.', 'Lauren W.',
-        'Matt S.', 'Matt W.', 'Max W.'
+        'Bryce B.', 
+        'Ben C.', 
+        'Dan B.', 
+        'Dave R.',
+        'Grant F.',
+        'Justin W.',
+        'Lauren O.', 
+        'Lauren W.',
+        'Matt S.', 
+        'Matt W.',  
+        'Sophia B.', 'Max W.'
     ];
 
     const totalCoordinates = 100;
