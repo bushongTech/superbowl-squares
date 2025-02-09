@@ -12,24 +12,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Control grid visibility
-const showSquares = false; // Change this to true when you want to show the names
-
-// Array of users who have paid
-const whoHasPaid = [
-    'Bryce B.', 
-    'Ben C.', 
-    'Dan B.', 
-    'Dave R.',
-    'Grant F.',
-    'Justin W.',
-    'Lauren O.', 
-    'Lauren W.',
-    'Matt S.', 
-    'Matt W.',  
-    'Sophia B.',
-    '11/12 Spots Filled'
-];
-
+const showSquares = true; // Change this to true when you want to show the names
 
 // Cached grid assignments
 let cachedAssignments = null;
@@ -43,18 +26,7 @@ async function fetchSuperbowlData() {
         if (data) {
             const superbowlEvent = data.events[0].competitions[0];
             const startTime = new Date(superbowlEvent.date);
-            const { state, completed } = superbowlEvent.status.type;
-
-            let status;
-            if (state === 'pre') {
-                status = 'Pre-Game';
-            } else if (state === 'in') {
-                status = 'Active';
-            } else if (completed) {
-                status = 'Final';
-            } else {
-                status = 'Unknown';
-            }
+            
 
             const homeTeam = superbowlEvent.competitors[0].team.abbreviation;
             const homeTeamScore = superbowlEvent.competitors[0].score;
@@ -63,7 +35,6 @@ async function fetchSuperbowlData() {
 
             return {
                 startTime,
-                status,
                 homeTeam,
                 homeTeamScore,
                 awayTeam,
@@ -91,13 +62,14 @@ function generateGridAssignments() {
         'Ben C.', 
         'Dan B.', 
         'Dave R.',
+        'Eric A.',
         'Grant F.',
         'Justin W.',
         'Lauren O.', 
         'Lauren W.',
         'Matt S.', 
         'Matt W.',  
-        'Sophia B.', 'Max W.'
+        'Sophia B.'
     ];
 
     const totalCoordinates = 100;
@@ -146,7 +118,6 @@ app.get('/api/assignments', (req, res) => {
 
     res.json({
         assignments: safeAssignments,
-        whoHasPaid
     });
 });
 
